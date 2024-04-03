@@ -15,6 +15,8 @@ public class MainPage {
     private final By personalCabinetLink = By.xpath("//p[contains(text(), 'Личный Кабинет')]/..");
     private final By pageTitle = By.xpath("//h1[contains(text(), 'Соберите бургер')]");
 
+    private final By entryButton = By.xpath("//button[contains(text(), 'Войти в аккаунт')]");
+
     public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
@@ -34,5 +36,11 @@ public class MainPage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Step("Click Entry Button")
+    public void clickEntryButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(entryButton));
+        driver.findElement(entryButton).click();
     }
 }

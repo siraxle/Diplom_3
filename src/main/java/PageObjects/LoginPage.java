@@ -1,10 +1,7 @@
 package PageObjects;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,6 +20,7 @@ public class LoginPage {
         this.driver = driver;
         this.wait = wait;
     }
+
     @Step("Click Registration Link")
     public void clickRegistrationLink() {
         wait.until(ExpectedConditions.presenceOfElementLocated(registrationLink));
@@ -62,4 +60,9 @@ public class LoginPage {
         }
     }
 
+    @Step("Click Restore Password Link")
+    public void clickRestorePasswordLink() {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'Восстановить пароль')]")));
+        driver.findElement(By.xpath("//a[contains(text(), 'Восстановить пароль')]")).click();
+    }
 }

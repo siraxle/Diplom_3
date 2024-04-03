@@ -1,10 +1,7 @@
 package PageObjects;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,6 +18,10 @@ public class RegistrationPage {
     private final By registrationButton = By.xpath("//button[contains(text(), 'Зарегистрироваться')]");
 
     private final By pageTitle = By.xpath("//h2[contains(text(), 'Регистрация')]");
+
+    private final By errorPasswordMessage = By.xpath("//p[contains(text(), 'Некорректный пароль')]");
+
+    private final By entryLink = By.xpath("//a[contains(text(), 'Войти')]");
 
 
     public RegistrationPage(WebDriver driver, WebDriverWait wait) {
@@ -64,6 +65,23 @@ public class RegistrationPage {
         fillNameInput(name);
         fillEmailInput(email);
         fillPasswordInput(password);
+    }
+
+    @Step("Check if Error Password Message is Displayed")
+    public boolean isErrorPasswordMessageDisplayed() {
+        try {
+            wait.withTimeout(Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(errorPasswordMessage));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Step("Click Entry Link")
+    public void clickEntryLink() {
+        WebElement dateField = driver.findElement(entryLink);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dateField);
+        dateField.click();
     }
 
     @Step("Check if Registration Page is Loaded")
