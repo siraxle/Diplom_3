@@ -14,7 +14,6 @@ public class UserHelper {
     private static final String BASE_URL = "https://stellarburgers.nomoreparties.site/api";
     private static final String USER_REGISTER_URN = "/auth/register";
     private static final String USER_LOGIN_URN = "/auth/login";
-
     private static final String USER_URN = "/auth/user";
 
 
@@ -37,8 +36,8 @@ public class UserHelper {
     }
 
     @Step("Create user")
-    public Response createUser(User user) {
-        return given()
+    public void createUserWithApi(User user) {
+        given()
                 .contentType("application/json")
                 .body(user)
                 .when()

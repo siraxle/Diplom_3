@@ -1,3 +1,5 @@
+import Helpers.User;
+import Helpers.UserFactory;
 import Helpers.UserHelper;
 import PageObjects.LoginPage;
 import PageObjects.MainPage;
@@ -64,17 +66,14 @@ public class PersonalCabinetTests extends BaseTest{
 
         // перейти на страницу логина и выбрать регистрацию
         LoginPage loginPage = new LoginPage(driver, wait);
-        loginPage.clickRegistrationLink();
 
-        // открыть и заполнить страницу регистрации
-        RegistrationPage registrationPage = new RegistrationPage(driver, wait);
-        String email = USER_HELPER.generateUniqueEmail();
-        String name = USER_HELPER.generateName();
-        String password = USER_HELPER.generatePassword();
-        registrationPage.fillRegistrationPage(email, name, password);
+        // создание юзера через API
+        UserFactory userFactory = new UserFactory(USER_HELPER);
+        User user = userFactory.createUser();
+        USER_HELPER.createUserWithApi(user);
 
         // залогиниться
-        loginPage.fillLoginPage(email, password);
+        loginPage.fillLoginPage(user.getEmail(), user.getPassword());
         mainPage.clickPersonalCabinetLink();
 
         // переходим в личный кабинет
@@ -85,7 +84,7 @@ public class PersonalCabinetTests extends BaseTest{
         assertTrue("The login page is not loaded", loginPage.isLoginPageLoaded());
 
         // удаляем пользователя после теста
-        Response loginResponse = USER_HELPER.loginUser(email, password);
+        Response loginResponse = USER_HELPER.loginUser(user.getEmail(), user.getPassword());
         USER_HELPER.deleteUser(loginResponse);
     }
 

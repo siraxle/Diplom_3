@@ -29,7 +29,7 @@ public class LoginPage {
 
     @Step("Fill Email Input")
     public void fillEmailInput(String date) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(emailInput));
+        wait.withTimeout(Duration.ofSeconds(20)).until(ExpectedConditions.presenceOfElementLocated(emailInput));
         wait.until(ExpectedConditions.elementToBeClickable(emailInput));
         driver.findElement(emailInput).click();
         driver.findElement(emailInput).sendKeys(date, Keys.ENTER);

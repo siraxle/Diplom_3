@@ -19,12 +19,10 @@ public class RegistrationTests extends BaseTest {
     public void successRegistrationTest() {
         // перейти на главную страницу
         MainPage mainPage = new MainPage(driver, wait);
-//        assertTrue("The home page is not loaded", mainPage.isMainPageLoaded());
         mainPage.clickPersonalCabinetLink();
 
         // перейти на страницу логина и выбрать регистрацию
         LoginPage loginPage = new LoginPage(driver, wait);
-//        assertTrue("The login page is not loaded", loginPage.isLoginPageLoaded());
         loginPage.clickRegistrationLink();
 
         // открыть и заполнить страницу регистрации
@@ -32,17 +30,16 @@ public class RegistrationTests extends BaseTest {
         String email = USER_HELPER.generateUniqueEmail();
         String name = USER_HELPER.generateName();
         String password = USER_HELPER.generatePassword();
-//        assertTrue("The registration page is not loaded", registrationPage.isRegistrationPageLoaded());
         registrationPage.fillRegistrationPage(email, name, password);
 
         // залогиниться
-//        assertTrue("The login page is not loaded", loginPage.isLoginPageLoaded());
+        assertTrue("Login page is not displayed", loginPage.isLoginPageLoaded());
         loginPage.fillLoginPage(email, password);
 
         // переходим в личный кабинет
         mainPage.clickPersonalCabinetLink();
         PersonalCabinetPage personalCabinetPage = new PersonalCabinetPage(driver, wait);
-//        assertTrue("The personal account page is not loaded", personalCabinetPage.isPersonalPageloaded());
+
         // получаем значения имени и email из личного кабинета
         String nameFromPersonalCabinet = personalCabinetPage.getNameValue();
         String emailFromPersonalCabinet = personalCabinetPage.getLoginValue();
@@ -61,12 +58,10 @@ public class RegistrationTests extends BaseTest {
     public void errorForInvalidPasswordTest() {
         // перейти на главную страницу
         MainPage mainPage = new MainPage(driver, wait);
-//        assertTrue("The home page is not loaded", mainPage.isMainPageLoaded());
         mainPage.clickPersonalCabinetLink();
 
         // перейти на страницу логина и выбрать регистрацию
         LoginPage loginPage = new LoginPage(driver, wait);
-//        assertTrue("The login page is not loaded", loginPage.isLoginPageLoaded());
         loginPage.clickRegistrationLink();
 
         // открыть и заполнить страницу регистрации
@@ -74,7 +69,6 @@ public class RegistrationTests extends BaseTest {
         String email = USER_HELPER.generateUniqueEmail();
         String name = USER_HELPER.generateName();
         String password = USER_HELPER.generatePassword().replaceAll("password", "");
-//        assertTrue("The registration page is not loaded", registrationPage.isRegistrationPageLoaded());
         registrationPage.fillRegistrationPage(email, name, password);
         registrationPage.clickRegistrationButton();
         assertTrue("Error password message is not displayed", registrationPage.isErrorPasswordMessageDisplayed());
