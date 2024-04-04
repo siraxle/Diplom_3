@@ -11,12 +11,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class PersonalCabinetTests extends BaseTest{
+public class PersonalCabinetTests extends BaseTest {
     private static final UserHelper USER_HELPER = new UserHelper();
 
     @Test
     @DisplayName("Entry to Personal Cabinet Authorized User")
-    public void entryToPersonalCabinetAuthorizedUser(){
+    public void entryToPersonalCabinetAuthorizedUser() {
         // перейти на главную страницу
         MainPage mainPage = new MainPage(driver, wait);
         mainPage.clickPersonalCabinetLink();
@@ -47,7 +47,7 @@ public class PersonalCabinetTests extends BaseTest{
 
     @Test
     @DisplayName("Entry to Personal Cabinet Unauthorized User")
-    public void entryToPersonalCabinetUnauthorizedUser(){
+    public void entryToPersonalCabinetUnauthorizedUser() {
         // перейти на главную страницу
         MainPage mainPage = new MainPage(driver, wait);
         mainPage.clickPersonalCabinetLink();
@@ -59,7 +59,7 @@ public class PersonalCabinetTests extends BaseTest{
 
     @Test
     @DisplayName("Exit from personal cabinet Test")
-    public void exitFromPersonalCabinetTest(){
+    public void exitFromPersonalCabinetTest() {
         // перейти на главную страницу
         MainPage mainPage = new MainPage(driver, wait);
         mainPage.clickPersonalCabinetLink();

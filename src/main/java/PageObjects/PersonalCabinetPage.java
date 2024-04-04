@@ -2,7 +2,6 @@ package PageObjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,7 +41,7 @@ public class PersonalCabinetPage {
     @Step("Check if Personal Page is Loaded")
     public boolean isPersonalPageloaded() {
         try {
-            wait.withTimeout(Duration.ofSeconds(20)).until(ExpectedConditions.presenceOfElementLocated(pageTitle));
+            wait.withTimeout(Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
             return true;
         } catch (Exception e) {
             return false;

@@ -23,7 +23,7 @@ public class RestorePasswordPage {
 
     @Step("Click Entry Link")
     public void clickEntryLink() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(entryLink));
+        wait.until(ExpectedConditions.presenceOfElementLocated(entryLink));
         driver.findElement(entryLink).click();
     }
 

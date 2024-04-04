@@ -1,4 +1,3 @@
-import Helpers.UserHelper;
 import PageObjects.LoginPage;
 import PageObjects.MainPage;
 import PageObjects.RegistrationPage;

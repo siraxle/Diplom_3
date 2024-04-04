@@ -2,18 +2,19 @@ package Helpers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 public class WebDriverFactory {
     public static WebDriver getDriver(String browserName) {
-        WebDriver driver = null;
+        WebDriver driver;
         switch (browserName.toLowerCase()) {
             case "chrome":
                 driver = new ChromeDriver();
                 break;
-            case "yandexbrowser":
-//                TODO разобраться как работать с yandex browser
-//                System.setProperty("webdriver.chrome.driver", "path/to/chromedriver"); // Укажите путь к chromedriver
-//                driver = new YandexDriver();
+            case "firefox":
+                driver = new FirefoxDriver();
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported browser: " + browserName);

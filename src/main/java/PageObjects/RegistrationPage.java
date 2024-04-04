@@ -38,7 +38,6 @@ public class RegistrationPage {
     }
 
     @Step("Fill Email Input")
-
     public void fillEmailInput(String date) {
         WebElement dateField = driver.findElement(emailInput);
         dateField.click();
@@ -48,6 +47,7 @@ public class RegistrationPage {
 
     @Step("Fill Password Input")
     public void fillPasswordInput(String date) {
+        wait.withTimeout(Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
         WebElement dateField = driver.findElement(passwordInput);
         dateField.click();
         dateField.clear();

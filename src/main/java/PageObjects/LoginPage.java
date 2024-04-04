@@ -52,7 +52,7 @@ public class LoginPage {
     @Step("Check if Login Page is Loaded")
     public boolean isLoginPageLoaded() {
         try {
-            wait.withTimeout(Duration.ofSeconds(20)).until(ExpectedConditions.presenceOfElementLocated(pageTitle));
+            wait.withTimeout(Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
             return true;
         } catch (Exception e) {
             return false;

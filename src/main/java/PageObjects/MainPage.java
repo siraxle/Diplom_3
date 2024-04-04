@@ -47,7 +47,7 @@ public class MainPage {
 
     @Step("Click Entry Button")
     public void clickEntryButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(entryButton));
+        wait.until(ExpectedConditions.presenceOfElementLocated(entryButton));
         driver.findElement(entryButton).click();
     }
 
