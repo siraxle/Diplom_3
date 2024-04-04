@@ -28,7 +28,6 @@ public class LoginPage {
     }
 
     @Step("Fill Email Input")
-
     public void fillEmailInput(String date) {
         wait.until(ExpectedConditions.presenceOfElementLocated(emailInput));
         wait.until(ExpectedConditions.elementToBeClickable(emailInput));

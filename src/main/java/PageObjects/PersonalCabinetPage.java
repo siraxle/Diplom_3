@@ -18,6 +18,8 @@ public class PersonalCabinetPage {
     private final By emailInput = By.xpath("//label[contains(text(), 'Логин')]/following-sibling::input");
     private final By pageTitle = By.xpath("//a[contains(text(), 'Профиль')]");
 
+    private final By exitButton = By.xpath("//button[contains(text(), 'Выход')]");
+
     public PersonalCabinetPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
@@ -46,5 +48,9 @@ public class PersonalCabinetPage {
             return false;
         }
     }
-
+    @Step("Exit button click")
+    public void clickExitButton() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(exitButton));
+        driver.findElement(exitButton).click();
+    }
 }
